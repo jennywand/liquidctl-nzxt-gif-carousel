@@ -1,0 +1,20 @@
+[Unit]
+Description=NZXT Kraken Control (liquidctl)
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/liquidcfg.sh
+Restart=always
+RestartSec=3
+
+# Prevent hanging forever
+TimeoutStartSec=30
+TimeoutStopSec=10
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
